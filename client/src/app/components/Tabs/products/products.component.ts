@@ -10,6 +10,12 @@ export class ProductsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('sesion')) {
+      //ejecuta sacar info del user 
+    } else {
+      location.replace('');
+    }
   }
+
 
 }

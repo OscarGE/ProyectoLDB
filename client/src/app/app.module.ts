@@ -9,6 +9,8 @@ import { SuppliersComponent } from './components/Tabs/suppliers/suppliers.compon
 import { ProductsComponent } from './components/Tabs/products/products.component';
 import { SalesComponent } from './components/Tabs/sales/sales.component';
 import { SummaryComponent } from './components/Tabs/summary/summary.component';
+import { HappyDealComponent } from './pages/happy-deal/happy-deal.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { SummaryComponent } from './components/Tabs/summary/summary.component';
     SuppliersComponent,
     ProductsComponent,
     SalesComponent,
-    SummaryComponent
+    SummaryComponent,
+    HappyDealComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
