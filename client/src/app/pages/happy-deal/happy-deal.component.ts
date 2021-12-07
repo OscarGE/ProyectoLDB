@@ -21,7 +21,7 @@ export class HappyDealComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
 
 
 }

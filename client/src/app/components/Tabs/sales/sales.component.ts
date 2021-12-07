@@ -7,13 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SalesComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
     if (localStorage.getItem('sesion')) {
       //ejecuta sacar info del user 
     } else {
       location.replace('');
     }
+  }
+
+  ngOnInit(): void {
+
   }
 }
