@@ -1,0 +1,10 @@
+/* mensaje de error indicando campo mal ingresado  */
+  .msjErr{
+    display: block;
+    margin: 0px;
+    font-size: 12px;
+    background-color: #FF9494;
+    color: #FFFFFF;
+    padding: 1px;
+    text-align: center;
+  }

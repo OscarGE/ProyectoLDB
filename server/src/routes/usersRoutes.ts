@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import { usersController } from '../controllers/usersController';
 
-
 //Ruta para trabajar con la tabla usrs de la base de datos
 class UsersRoutes{
   public router:Router = Router();
