@@ -11,14 +11,15 @@ export class HappyDealComponent implements OnInit {
 
   user!: User;
 
-  constructor(private router: ActivatedRoute) {}
-
-  ngOnInit(): void {
+  constructor(private router: ActivatedRoute) {
     if (localStorage.getItem('sesion')) {
       //ejecuta sacar info del user 
     } else {
       location.replace('');
     }
+  }
+
+  ngOnInit(): void {
   }
   
 
