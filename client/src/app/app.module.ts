@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http'
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +14,11 @@ import { SalesComponent } from './components/Tabs/sales/sales.component';
 import { SummaryComponent } from './components/Tabs/summary/summary.component';
 import { HappyDealComponent } from './pages/happy-deal/happy-deal.component';
 import { LoginComponent } from './pages/login/login.component';
+import { RegisterUserComponent } from './pages/register-user/register-user.component';
+
+//Servicios
+import { UserService } from './services/user_service/user.service';
+
 
 @NgModule({
   declarations: [
@@ -22,13 +30,19 @@ import { LoginComponent } from './pages/login/login.component';
     SalesComponent,
     SummaryComponent,
     HappyDealComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    UserService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

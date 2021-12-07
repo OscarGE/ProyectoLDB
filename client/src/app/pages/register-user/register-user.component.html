@@ -1,0 +1,63 @@
+<div class="container h-100 mt-5">
+    <div class="row align-items-center h-100">
+        <div class="col d-flex justify-content-center">
+            <div class="card text-center" style="width: 30rem;">
+                <div class="card-body">
+                    <h2>Crea una cuenta en </h2>
+                    <h2>HAPPY DEAL</h2>
+                    <form [formGroup]="form" (ngSubmit)="senduser($event)">
+                    <br>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" name="email" formControlName="email" placeholder="E-mail">
+                        <!-- Directiva para mostrar mensajes reactivos -->
+                        <div *ngIf="form.get('email')!.errors && form.get('email')!.touched || existeEmail">
+                        <p class="msjErr" *ngIf="form.get('email')!.hasError('required')">
+                            <i class="fas fa-times-circle"></i> Este campo es requerido
+                        </p>
+                        <p class="msjErr" *ngIf="form.get('email')!.hasError('pattern')">
+                            <i class="fas fa-times-circle"></i> Este campo no acepta espacios
+                        </p>
+                        <p class="msjErr" *ngIf="form.get('email')!.hasError('email')">
+                            <i class="fas fa-times-circle"></i> No es un email valido
+                        </p>
+                        <p class="msjErr" *ngIf="existeEmail">
+                         <i class="fas fa-times-circle"></i> Éste correo ya está siendo utilizado
+                        </p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" name="password" formControlName="password"
+                        placeholder="Contraseña">
+                        <!-- Directiva para mostrar mensajes reactivos -->
+                        <div *ngIf="form.get('password')!.errors && form.get('password')!.touched">
+                        <p class="msjErr" *ngIf="form.get('password')!.hasError('required')">
+                            <i class="fas fa-times-circle"></i> Este campo es requerido
+                        </p>
+                        <p class="msjErr" *ngIf="form.get('password')!.hasError('pattern')">
+                            <i class="fas fa-times-circle"></i> Este campo no acepta espacios
+                        </p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" name="pass_conf" formControlName="pass_conf"
+                        placeholder="Confirma la contraseña">
+                        <!-- Directiva para mostrar mensajes reactivos -->
+                        <div *ngIf="form.get('pass_conf')!.errors && form.get('pass_conf')!.touched || match">
+                        <p class="msjErr" *ngIf="form.get('pass_conf')!.hasError('required')">
+                            <i class="fas fa-times-circle"></i> Este campo es requerido
+                        </p>
+                        <p class="msjErr" *ngIf="match">
+                          <i class="fas fa-times-circle"></i> Las contraseñas no coinciden
+                        </p>
+                        </div>
+                    </div>
+                    <div *ngIf="msjErr != '' ">
+                        <p class="msjErr2"><i class="fas fa-times-circle"></i> {{ msjErr }}</p>
+                    </div>
+                    <input type="submit" [disabled]="form.invalid || !(!match && !existeEmail)"  class="btn btn-primary btn-lg"value="Crear cuenta">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
