@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import Swal from 'sweetalert2'
@@ -17,7 +16,7 @@ export class RegisterUserComponent implements OnInit {
   msjErr="";
   match: boolean = false; //Para encontrar coincidencias en las contraseñas
   existeEmail: boolean = false;
-  constructor(private router: ActivatedRoute, private formBuilder: FormBuilder, private userService: UserService) {
+  constructor(private formBuilder: FormBuilder, private userService: UserService) {
     this.buildForm();
   }
 
@@ -84,7 +83,7 @@ export class RegisterUserComponent implements OnInit {
           ).then((result) => {
             this.newUser = v;
             localStorage.setItem('sesion', JSON.stringify(this.newUser));
-            location.replace('../HappyDeal');
+            location.replace('../HappyDeal/welcome');
           })
         },
         error: (e) => {console.error(e)},

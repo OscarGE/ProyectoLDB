@@ -10,8 +10,9 @@
                     <h5>Inicia sesión para continuar</h5>
                     <form [formGroup]="form" (ngSubmit)="sendlogin($event)">
                     <br>
-                    <div class="mb-3">
-                        <input type="email" class="form-control" name="email" formControlName="email" placeholder="E-mail">
+                    <div class="mb-3 form-floating">
+                        <input type="email" class="form-control" name="email" formControlName="email" placeholder="e-mail">
+                        <label for="floatingPassword" style="color: #AEB6BF">e-mail</label>
                         <!-- Directiva para mostrar mensajes reactivos -->
                         <div *ngIf="form.get('email')!.errors && form.get('email')!.touched">
                         <p class="msjErr" *ngIf="form.get('email')!.hasError('required')">
@@ -25,9 +26,10 @@
                         </p>
                         </div>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 form-floating">
                         <input type="password" class="form-control" name="password" formControlName="password"
                         placeholder="Contraseña">
+                        <label for="floatingPassword" style="color: #AEB6BF">Contraseña</label>
                         <!-- Directiva para mostrar mensajes reactivos -->
                         <div *ngIf="form.get('password')!.errors && form.get('password')!.touched">
                         <p class="msjErr" *ngIf="form.get('password')!.hasError('required')">

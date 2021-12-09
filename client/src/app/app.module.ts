@@ -31,7 +31,7 @@ import { UserService } from './services/user_service/user.service';
     SummaryComponent,
     HappyDealComponent,
     LoginComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
   ],
   imports: [
     BrowserModule,
