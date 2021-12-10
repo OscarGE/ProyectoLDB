@@ -9,6 +9,7 @@ const cors_1 = __importDefault(require("cors"));
 // import path from 'path';
 const usersRoutes_1 = __importDefault(require("./routes/usersRoutes"));
 const providersRoutes_1 = __importDefault(require("./routes/providersRoutes"));
+const productsRoutes_1 = __importDefault(require("./routes/productsRoutes"));
 class MyServer {
     constructor() {
         this.app = (0, express_1.default)(); //Se ejecuta el servidor con la función express()
@@ -28,6 +29,7 @@ class MyServer {
         // this.app.use('/api',indexRoutes)
         this.app.use('/api/users', usersRoutes_1.default); //ruta para trabajar con la tabla usrs de la base de datos
         this.app.use('/api/providers', providersRoutes_1.default); //ruta para trabajar con la tabla providers de la base de datos
+        this.app.use('/api/products', productsRoutes_1.default); //ruta para trabajar con la tabla products de la base de datos
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

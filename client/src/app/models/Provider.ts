@@ -1,5 +1,6 @@
 export interface Provider{
   id?: number;
+  id_user?: number;
   name?: string;
   description?: string;
   country?: string;

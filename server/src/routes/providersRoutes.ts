@@ -14,7 +14,7 @@ class ProvidersRoutes{
     this.router.post('/',providersController.register); //registrar un proveedor
     this.router.put('/:id', providersController.update); //actualizar un proveedor por su id
     this.router.delete('/:id', providersController.delete); //eliminar un proveedor por su id
-    this.router.get('/verify-isExistProvider/:name', providersController.isExistProvider); //Validar el nombre de proveedor
+    this.router.post('/verify-isExistProvider/', providersController.isExistProvider); //Validar el nombre de proveedor
   }
 }
 

@@ -5,7 +5,7 @@
     <div class="cardd-body"> 
       <div class="container">
         <p class="separador text-center">Registro de nuevos proveedores</p>
-        <button type="button" class="btn btn-warning btn-lg" on-click="showForm()">Registrar a un nuevo proveedores</button>
+        <button type="button" class="btn btn-warning btn-lg" on-click="showForm()">Registrar un nuevo proveedores</button>
           <div class="card text-center" *ngIf="isformShow==true">
             <div class="card-body">
             <form [formGroup]="form" (ngSubmit)="sendprovider($event)">
@@ -46,7 +46,7 @@
                     <label style="color: #AEB6BF">País</label>
                     <!-- Directiva para mostrar mensajes reactivos -->
                     <div *ngIf="form.get('country')!.errors && form.get('country')!.touched">
-                      <p class="msjErr" *ngIf="form.get('country')!.hasError('country')">
+                      <p class="msjErr" *ngIf="form.get('country')!.hasError('required')">
                         <i class="fas fa-times-circle"></i> Este campo es requerido
                       </p>
                     </div>                                       

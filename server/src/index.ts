@@ -4,6 +4,7 @@ import cors from 'cors';
 // import path from 'path';
 import usersRoutes from './routes/usersRoutes';
 import providersRoutes from './routes/providersRoutes';
+import productsRoutes from './routes/productsRoutes';
 
 class MyServer{
   public app: Application; //Se define el servidor en la variable app
@@ -25,6 +26,7 @@ class MyServer{
     // this.app.use('/api',indexRoutes)
     this.app.use('/api/users',usersRoutes) //ruta para trabajar con la tabla usrs de la base de datos
     this.app.use('/api/providers',providersRoutes) //ruta para trabajar con la tabla providers de la base de datos
+    this.app.use('/api/products',productsRoutes) //ruta para trabajar con la tabla products de la base de datos
   }
   start(): void{ //El servidor se pone a la escucha
     this.app.listen(this.app.get('port'), ()=> {

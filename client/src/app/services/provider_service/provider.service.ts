@@ -26,7 +26,7 @@ export class ProviderService {
   updateProvider(id: string, updateProvider: Provider): Observable<Provider>{
     return this.http.put(`${this.API_URI}/providers/${id}`, updateProvider);
   }
-  verifyProvider(name: string){
-    return this.http.get(`${this.API_URI}/providers/verify-isExistProvider/${name}`);
+  verifyProvider(provider: Provider): Observable<Provider>{
+    return this.http.post(`${this.API_URI}/providers/verify-isExistProvider/`, provider);
   }
 }

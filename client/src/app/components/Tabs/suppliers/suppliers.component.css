@@ -1,5 +1,5 @@
 .tituloCard{
-  background-color: #1c2f3a;
+  background-color: #FF474A;
   color:#ffffff;
   font-weight: bolder;
   font-size: 30px;
@@ -8,8 +8,8 @@
 }
 /* titulo que separa las secciones del formulario */
 .separador{
-    background-color: #115e86;
-    color: #ffffff;
+    background-color: #D9D9D9;
+    color: #000000;
     font-weight: bold;
     padding: 3px;
     border-radius: 6px;

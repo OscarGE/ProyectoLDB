@@ -26,21 +26,22 @@ class ProvidersController {
         return __awaiter(this, void 0, void 0, function* () {
         });
     }
-    //Se ejecuta la query para registrar un usuario
+    //Se ejecuta la query para registrar un proveedore
     register(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             var idP;
             //Se realiza la consulta de registro en la tabla providers 
-            yield database_1.default.query('INSERT INTO providers(name,description) VALUES ("' + req.body.name + '", "' + req.body.description + '");', function (err, result, fields) {
+            yield database_1.default.query('INSERT INTO providers(id_user,name,description) VALUES ("' + req.body.id_user + '","' + req.body.name + '", "' + req.body.description + '");', function (err, result, fields) {
                 return __awaiter(this, void 0, void 0, function* () {
                     if (err)
                         throw err;
                     if (result.affectedRows == 1) {
-                        yield database_1.default.query('SELECT id FROM providers WHERE name = "' + req.body.name + '";', function (err, result, fields) {
+                        yield database_1.default.query('SELECT id FROM providers WHERE name = "' + req.body.name + '" AND id_user = "' + req.body.id_user + '" ;', function (err, result, fields) {
                             return __awaiter(this, void 0, void 0, function* () {
                                 if (err)
                                     throw err;
                                 idP = Object.values(JSON.parse(JSON.stringify(result)));
+                                //Se realiza la consulta de registro en la tabla locations
                                 yield database_1.default.query('INSERT INTO locations(id_provider,country,state,city,postal,address) VALUES (' + idP[0].id + ', "' + req.body.country + '", "' + req.body.state + '", "' + req.body.city + '", "' + req.body.postal + '", "' + req.body.address + '");', function (err, result, fields) {
                                     return __awaiter(this, void 0, void 0, function* () {
                                         if (err)
@@ -60,7 +61,6 @@ class ProvidersController {
                                 });
                             });
                         });
-                        //Se realiza la consulta de registro en la tabla locations
                     }
                 });
             });
@@ -77,11 +77,10 @@ class ProvidersController {
         return __awaiter(this, void 0, void 0, function* () {
         });
     }
-    //Se ejecuta la query que verifica si ya existe el email
+    //Se ejecuta la query que verifica si ya existe el proveedores
     isExistProvider(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { name } = req.params;
-            yield database_1.default.query('SELECT * FROM providers WHERE name = ?', [name], function (err, result, fields) {
+            yield database_1.default.query('SELECT * FROM providers WHERE name = "' + req.body.name + '" AND id_user = "' + req.body.id_user + '";', function (err, result, fields) {
                 if (err)
                     throw err;
                 if (result.length > 0) {
