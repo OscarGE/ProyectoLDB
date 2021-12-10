@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         next: (v) => { 
             this.login = v;
             localStorage.setItem('sesion', JSON.stringify(this.login));
-            location.replace('/HappyDeal');},
+            location.replace('/HappyDeal/welcome');},
         error: (e) => {
             this.msjErr="El email o la contraseña ingresados son erróneos. Por favor, inténtelo de nuevo.";
             console.error(e)},

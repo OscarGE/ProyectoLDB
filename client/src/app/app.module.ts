@@ -18,6 +18,8 @@ import { RegisterUserComponent } from './pages/register-user/register-user.compo
 
 //Servicios
 import { UserService } from './services/user_service/user.service';
+import { ProviderService } from './services/provider_service/provider.service';
+import { ProductService } from './services/product_service/product.service';
 
 
 @NgModule({
@@ -31,7 +33,7 @@ import { UserService } from './services/user_service/user.service';
     SummaryComponent,
     HappyDealComponent,
     LoginComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,8 @@ import { UserService } from './services/user_service/user.service';
   ],
   providers: [
     UserService,
+    ProviderService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })

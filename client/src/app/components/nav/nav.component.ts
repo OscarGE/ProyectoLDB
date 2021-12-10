@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-
-  constructor() { }
+  userEmail=""
+  constructor() { 
+  }
 
   ngOnInit(): void {
+    const sesion = localStorage.getItem('sesion'); 
+    let value = " " + sesion + " ";
+    this.userEmail=JSON.parse(value)["email"];
   }
 
   logout(){
