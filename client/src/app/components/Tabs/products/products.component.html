@@ -108,6 +108,34 @@
             </div>
           </div>
           <p class="separador text-center">Lista de preductos registrados</p>
+          <div *ngIf="productsLits.length==0">
+            <h4>Aún no hay productos registrados</h4>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let product of productsLits; let i=index;">
+              <div class="card text-left">
+                <div class="card-header">
+                  <b><i>{{product.name}}</i></b>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                      <button type="button" class="btn btn-primary botones" [routerLink]="'../products/see/'+product.id" routerLinkActive="active"><i class="fas fa-eye"></i></button>
+                    </div>
+                    <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                      <button type="button" class="btn btn-warning botones" [routerLink]="'../products/update/'+product.id" routerLinkActive="active"><i class="fas fa-pencil-alt"></i></button>
+                    </div>
+                    <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                      <button type="button" class="btn btn-danger botones" on-click="deleteProduct(product.id)"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer text-muted">
+                  {{product.registered_at | date: 'dd/MM/yyyy'}}
+                </div>
+              </div>
+            </div>  
+          </div>
       </div>
     </div>
   </div>

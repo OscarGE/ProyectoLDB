@@ -1,0 +1,69 @@
+<br><br>
+<div class="col-md-10 offset-md-1">
+  <div class="card">
+    <div class="card-header tituloCard" id='formUsr'><i class="fas fa-warehouse"></i>  Productos</div> 
+    <div class="cardd-body"> 
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Nombre</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido text-left">{{productGet.name}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Descripción</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido2 text-left">{{productGet.description}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Proveedor</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido2 text-left">{{productGet.nameProvider}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Precio</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido3 text-left">${{productGet.price}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Stock</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido3 text-left">{{productGet.stock}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Categoría</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido2 text-left">{{productGet.category}}</p>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Fecha de registro</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido2 text-left"> {{productGet.registered_at | date: 'dd/MM/yyyy'}}</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+

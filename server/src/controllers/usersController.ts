@@ -15,7 +15,6 @@ class UserController {
   public async getOne(req: Request, res: Response): Promise<any> {
     const { id } = req.params;
     await pool.query('SELECT * FROM users WHERE id = ?', [id], function (err, result, fields) {
-      console.log('SELECT * FROM users WHERE id = ?', [id]);
       if (err) throw err;
       if (result.length > 0) {
         return res.json(result[0]);
@@ -35,7 +34,6 @@ class UserController {
   //Se ejecuta la query para actualizar un usuario por su id
   public async update(req: Request, res: Response): Promise<any> {
     const { id } = req.params;
-    //Se obtiene primero la ruta de la foto actual para eliminarla
     await pool.query('SELECT * FROM users WHERE id = ?', [id],async function(err, result, fields) {
       if (err) throw err;
       if(result[0]){ //Si existe el usairo

@@ -9,8 +9,8 @@ class ProvidersRoutes{
     this.config();
   }
   config(): void{//Se definen las peticiones
-    this.router.get('/', providersController.list); //listar todos los proveedores
-    this.router.get('/:id', providersController.getOne); //mostrar un proveedor por su id
+    this.router.get('/list/:id_user', providersController.list); //listar todos los proveedores
+    this.router.get('/one/:id', providersController.getOne); //mostrar un proveedor por su id
     this.router.post('/',providersController.register); //registrar un proveedor
     this.router.put('/:id', providersController.update); //actualizar un proveedor por su id
     this.router.delete('/:id', providersController.delete); //eliminar un proveedor por su id

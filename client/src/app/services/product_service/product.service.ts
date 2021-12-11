@@ -8,11 +8,11 @@ import { Observable } from 'rxjs';
 export class ProductService {
   API_URI = 'http://localhost:3000/api' //Como atributo la dirección del servidor
   constructor(private http: HttpClient) { }
-  getProducts(): Observable<Product>{
-    return this.http.get(`${this.API_URI}/products`)
+  getProducts(id_user: string): Observable<Product>{
+    return this.http.get(`${this.API_URI}/products/list/${id_user}`)
   }
   geProduct(id: string): Observable<Product>{
-    return this.http.get(`${this.API_URI}/products/${id}`);
+    return this.http.get(`${this.API_URI}/products/one/${id}`);
   }
   deleteProduct(id: string): Observable<Product>{
     return this.http.delete(`${this.API_URI}/products/${id}`);

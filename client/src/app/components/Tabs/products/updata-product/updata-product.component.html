@@ -1,0 +1,111 @@
+<br><br>
+<div class="col-md-10 offset-md-1">
+  <div class="card text-center">
+    <div class="card-header tituloCard" id='formUsr'><i class="fas fa-warehouse"></i> Productos</div> 
+    <div class="cardd-body"> 
+      <div class="container">
+        <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="editproducts($event)">
+          <br>
+          <div class="mb-2 form-floating">
+              <input type="text" class="form-control" name="name" formControlName="name" placeholder="Nombre del producto">
+              <label style="color: #AEB6BF">Nombre del producto</label>
+              <!-- Directiva para mostrar mensajes reactivos -->
+              <div *ngIf="form.get('name')!.errors && form.get('name')!.touched">
+              <p class="msjErr" *ngIf="form.get('name')!.hasError('required')">
+                  <i class="fas fa-times-circle"></i> Este campo es requerido
+              </p>
+              </div>
+          </div>
+          <div class="mb-2 form-floating">
+            <textarea class="form-control" placeholder="Descripción" name="description" formControlName="description"></textarea>
+            <label style="color: #AEB6BF">Descripción</label>
+            <!-- Directiva para mostrar mensajes reactivos -->
+            <div *ngIf="form.get('description')!.errors && form.get('description')!.touched">
+            <p class="msjErr" *ngIf="form.get('description')!.hasError('required')">
+              <i class="fas fa-times-circle"></i> Este campo es requerido
+            </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-3">
+              <div class="mb-2 form-floating">
+                <input type="text" class="form-control" name="price" formControlName="price" placeholder="Precio ($)">
+                <label style="color: #AEB6BF">Precio ($)</label>
+                <!-- Directiva para mostrar mensajes reactivos -->
+                <div *ngIf="form.get('price')!.errors && form.get('price')!.touched">
+                  <p class="msjErr" *ngIf="form.get('price')!.hasError('required')">
+                    <i class="fas fa-times-circle"></i> Este campo es requerido
+                  </p>
+                  <p class="msjErr" *ngIf="form.get('price')!.hasError('pattern')">
+                    <i class="fas fa-times-circle"></i> Este campo acepta solo precios
+                  </p>
+                </div>                                       
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-3">
+              <div class="mb-2 form-floating">
+                <input type="number"  min="0" max="9999"class="form-control" name="stock" formControlName="stock" placeholder="Existencias">
+                <label style="color: #AEB6BF">Existencias</label>
+                <!-- Directiva para mostrar mensajes reactivos -->
+                <div *ngIf="form.get('stock')!.errors && form.get('stock')!.touched">
+                  <p class="msjErr" *ngIf="form.get('stock')!.hasError('required')">
+                    <i class="fas fa-times-circle"></i> Este campo es requerido
+                  </p>
+                  <p class="msjErr" *ngIf="form.get('stock')!.hasError('max')">
+                    <i class="fas fa-times-circle"></i> Máximo 4 dígitos
+                  </p>
+                  <p class="msjErr" *ngIf="form.get('stock')!.hasError('min')">
+                    <i class="fas fa-times-circle"></i> Mínimo 1 dígito positivos
+                  </p>
+                </div>                                       
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-3">
+              <div class="mb-2 form-floating">
+                <select
+                  class="form-select form-control " name="id_provider" formControlName="id_provider">
+                  <option *ngFor="let provider of providersList; let i=index;" [value]="providersIdList[i]">
+                  {{provider}}
+                  </option>
+                </select>
+                <label style="color: #AEB6BF">Proveedor</label>
+                <!-- Directiva para mostrar mensajes reactivos -->
+                <div *ngIf="form.get('id_provider')!.errors && form.get('id_provider')!.touched || !haveSuppliers">
+                  <p class="msjErr" *ngIf="form.get('id_provider')!.hasError('required') && haveSuppliers">
+                    <i class="fas fa-times-circle"></i> Este campo es requerido
+                  </p>
+                  <p class="msjErr" *ngIf="!haveSuppliers">
+                    <i class="fas fa-times-circle"></i> No hay proveedores
+                  </p>
+                </div>                                       
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-3">
+              <div class="mb-2 form-floating">
+                <select
+                  class="form-select form-control " name="id_category" formControlName="id_category">
+                  <option *ngFor="let category of categoriesList; let i=index;" [value]="categoriesIdList[i]">
+                  {{category}}
+                  </option>
+                </select>
+                <label style="color: #AEB6BF">Categoría</label>
+                <!-- Directiva para mostrar mensajes reactivos -->
+                <div *ngIf="form.get('id_category')!.errors && form.get('id_category')!.touched">
+                  <p class="msjErr" *ngIf="form.get('id_category')!.hasError('required')">
+                    <i class="fas fa-times-circle"></i> Este campo es requerido
+                  </p>
+                </div>                                        
+              </div>
+            </div>
+          </div> 
+          <br>
+          <input type="submit" [disabled]="form.invalid"  class="btn btn-success btn-lg" value="Editar">
+        </form>
+        </div>   
+      </div>
+    </div>
+  </div>
+</div>
+
+

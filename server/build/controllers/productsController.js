@@ -19,11 +19,36 @@ class ProductsController {
     //Se ejecuta la query para listar todos los productos
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            const { id_user } = req.params;
+            yield database_1.default.query('SELECT * FROM products WHERE id_user = ?', [id_user], function (err, result, fields) {
+                if (err)
+                    throw err;
+                if (result.length > 0) {
+                    return res.json(result);
+                }
+                res.status(404).json({ message: 'Este usario no tiene productos' });
+            });
         });
     }
     //Se ejecuta la query para mostrar un producto por su id
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            yield database_1.default.query(`
+                      SELECT p.id, p.name, p.description, p.registered_at, p.price, p.stock, v.name AS nameProvider, v.id AS idProvider, c.category, c.id AS idCategory
+                      FROM products p 
+                      INNER JOIN providers v 
+                      ON p.id_provider=v.id 
+                      INNER JOIN categories c 
+                      ON p.id_category=c.id
+                      WHERE p.id = ?`, [id], function (err, result, fields) {
+                if (err)
+                    throw err;
+                if (result.length > 0) {
+                    return res.json(result[0]);
+                }
+                res.status(404).json({ message: 'Proveedor no encontrado' });
+            });
         });
     }
     //Se ejecuta la query para registrar un producto
@@ -42,11 +67,46 @@ class ProductsController {
     //Se ejecuta la query para actualizar un producto por su id
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            yield database_1.default.query('SELECT * FROM products WHERE id = ?', [id], function (err, result, fields) {
+                return __awaiter(this, void 0, void 0, function* () {
+                    if (err)
+                        throw err;
+                    if (result[0]) { //Si existe el producto
+                        //Se ejecuta la query para actualizar al producto
+                        yield database_1.default.query('UPDATE products set ? WHERE id = ?', [req.body, id], function (err, result, fields) {
+                            if (err)
+                                throw err;
+                            if (result.affectedRows == 1) {
+                                res.json({ message: 'El producto fue actualizado' });
+                            }
+                            else {
+                                res.status(404).json({ message: 'Producto no actualizado' });
+                            }
+                        });
+                    }
+                    else {
+                        res.status(404).json({ message: 'Producto no encontrado' });
+                    }
+                });
+            });
         });
     }
     //Se ejecuta la query para eliminar un producto por su id
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            //Consulta para eleiminar al usuairo 
+            yield database_1.default.query('DELETE FROM products WHERE id = ?', [id], function (err, result, fields) {
+                if (err)
+                    throw err;
+                if (result.affectedRows == 1) {
+                    res.json({ message: 'El producto fue eliminado' });
+                }
+                else {
+                    res.status(404).json({ message: 'Producto no encontrado' });
+                }
+            });
         });
     }
     //Se ejecuta la query que recupera la lista de proveedores

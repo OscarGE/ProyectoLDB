@@ -1,0 +1,64 @@
+<br><br>
+<div class="col-md-10 offset-md-1">
+  <div class="card">
+    <div class="card-header tituloCard" id='formUsr'><i class="fas fa-truck"></i> Proveedores</div> 
+    <div class="cardd-body"> 
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Nombre</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido text-left">{{providesGet.name}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Descripción</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido2 text-left">{{providesGet.description}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Ubicación</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido2 text-left">
+              {{providesGet.country}}, {{providesGet.address}}, <br>
+              C.P. {{providesGet.postal}}, {{providesGet.city}}, {{providesGet.state}}
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Contactos</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-4" *ngFor="let type of typeList; let i=index;">
+                <div class="card contenido2">
+                  <div class="card-body">
+                    <h5 class="card-title">{{type}}</h5> <hr>
+                    <p class="card-text">{{contactList[i]}}</p>
+                  </div>
+                </div>                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <p class="separador text-center">Fecha de registro</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+            <p class="contenido2 text-left"> {{providesGet.registered_at | date: 'dd/MM/yyyy'}}</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+

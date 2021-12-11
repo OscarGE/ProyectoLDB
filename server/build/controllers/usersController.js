@@ -32,7 +32,6 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             yield database_1.default.query('SELECT * FROM users WHERE id = ?', [id], function (err, result, fields) {
-                console.log('SELECT * FROM users WHERE id = ?', [id]);
                 if (err)
                     throw err;
                 if (result.length > 0) {
@@ -57,7 +56,6 @@ class UserController {
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            //Se obtiene primero la ruta de la foto actual para eliminarla
             yield database_1.default.query('SELECT * FROM users WHERE id = ?', [id], function (err, result, fields) {
                 return __awaiter(this, void 0, void 0, function* () {
                     if (err)

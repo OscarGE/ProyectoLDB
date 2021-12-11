@@ -9,8 +9,8 @@ class ProductsRoutes{
     this.config();
   }
   config(): void{//Se definen las peticiones
-    this.router.get('/', productsController.list); //listar todos los productos
-    this.router.get('/:id', productsController.getOne); //mostrar un producto por su id
+    this.router.get('/list/:id_user', productsController.list); //listar todos los productos
+    this.router.get('/one/:id', productsController.getOne); //mostrar un producto por su id
     this.router.post('/',productsController.register); //registrar un producto
     this.router.put('/:id', productsController.update); //actualizar un producto por su id
     this.router.delete('/:id', productsController.delete); //eliminar un producto por su id
