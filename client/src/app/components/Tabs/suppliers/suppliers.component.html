@@ -16,7 +16,7 @@
                   <!-- Directiva para mostrar mensajes reactivos -->
                   <div *ngIf="form.get('name')!.errors && form.get('name')!.touched || existeName">
                   <p class="msjErr" *ngIf="form.get('name')!.hasError('required')">
-                      <i class="fas fa-times-circle"></i> Este campo es requerido
+                      <i class="fas fa-times-circle"></i> Éste campo es requerido
                   </p>
                   <p class="msjErr" *ngIf="existeName">
                     <i class="fas fa-times-circle"></i> Éste proveedor ya está registrado
@@ -154,6 +154,34 @@
             </div>
           </div>
           <p class="separador text-center">Lista de proveedores registrados</p>
+          <div *ngIf="providesLits.length==0">
+            <h4>Aún no hay proveedores registrados</h4>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let provides of providesLits; let i=index;">
+              <div class="card text-left">
+                <div class="card-header">
+                  <b><i>{{provides.name}}</i></b>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                      <button type="button" class="btn btn-primary botones" [routerLink]="'../suppliers/see/'+provides.id" routerLinkActive="active"><i class="fas fa-eye"></i></button>
+                    </div>
+                    <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                      <button type="button" class="btn btn-warning botones" [routerLink]="'../suppliers/update/'+provides.id" routerLinkActive="active"><i class="fas fa-pencil-alt"></i></button>
+                    </div>
+                    <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                      <button type="button" class="btn btn-danger botones" on-click="deleteSuppliers(provides.id)"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer text-muted">
+                  {{provides.registered_at | date: 'dd/MM/yyyy'}}
+                </div>
+              </div>
+            </div>  
+          </div>
       </div>
     </div>
   </div>

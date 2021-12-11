@@ -11,11 +11,11 @@ export class ProviderService {
   API_URI = 'http://localhost:3000/api' //Como atributo la dirección del servidor
   constructor(private http: HttpClient) { }
 
-  getProviders(): Observable<Provider>{
-    return this.http.get(`${this.API_URI}/providers`)
+  getProviders(id_user: string): Observable<Provider>{
+    return this.http.get(`${this.API_URI}/providers/list/${id_user}`)
   }
   getProvider(id: string): Observable<Provider>{
-    return this.http.get(`${this.API_URI}/providers/${id}`);
+    return this.http.get(`${this.API_URI}/providers/one/${id}`);
   }
   deleteProvider(id: string): Observable<Provider>{
     return this.http.delete(`${this.API_URI}/providers/${id}`);

@@ -24,6 +24,7 @@ export class SuppliersComponent implements OnInit {
   contactList:any=[];
   form!: FormGroup; //Formulario reactivo 
   newProvider!: Provider;
+  providesLits: any=[];
   existeName: boolean = false;
   constructor(private formBuilder: FormBuilder,private providerService: ProviderService) { 
     this.buildForm();
@@ -34,6 +35,14 @@ export class SuppliersComponent implements OnInit {
       const sesion = localStorage.getItem('sesion'); 
       let value = " " + sesion + " ";
       this.userId=JSON.parse(value)["id"];
+      this.providerService.getProviders(this.userId)
+      .subscribe({
+        next: (v) =>  { 
+          this.providesLits=v
+        },
+        error: (e) => {console.log(e)},
+        complete: () => console.info('complete')
+      })
     } else {
       location.replace('');
     }
@@ -115,6 +124,37 @@ export class SuppliersComponent implements OnInit {
     const contactArray: FormArray = this.form.get('contactList') as FormArray;
     typeArray.removeAt(i);
     contactArray.removeAt(i);
+  }
+
+  deleteSuppliers(id: string){
+    Swal.fire({
+      title: '¿Seguro que desea eliminar a este proveedor?',
+      text: "",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#AEB6BF',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.providerService.deleteProvider(id)
+        .subscribe({
+          next: (v) =>  { 
+            Swal.fire(
+              'Eliminado',
+              'El proveedor ha sido eliminado del registro',
+              'success'
+            ).then(() => {
+              location.reload();
+            });     
+          },
+          error: (e) => {},
+          complete: () => console.info('complete')
+        })
+        
+      }
+    }) 
   }
  
   sendprovider(event: Event) {

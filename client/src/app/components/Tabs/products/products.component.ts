@@ -20,6 +20,7 @@ export class ProductsComponent implements OnInit {
   categoriesIdList:any=[];
   haveSuppliers=false
   newProduct!: Product;
+  productsLits: any=[];
   constructor(private formBuilder: FormBuilder, private productService: ProductService) { 
     this.buildForm();
   }
@@ -52,6 +53,14 @@ export class ProductsComponent implements OnInit {
         error: (e) => {console.log(e)},
         complete: () => console.info('complete')
       })
+      this.productService.getProducts(this.userId)
+      .subscribe({
+        next: (v) =>  { 
+          this.productsLits=v
+        },
+        error: (e) => {console.log(e)},
+        complete: () => console.info('complete')
+      })
 
     } else {
       location.replace('');
@@ -77,7 +86,36 @@ export class ProductsComponent implements OnInit {
       this.isformShow=true
     }
   }
-
+  deleteProduct(id: string){
+    Swal.fire({
+      title: '¿Seguro que desea eliminar este producto?',
+      text: "",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#AEB6BF',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.productService.deleteProduct(id)
+        .subscribe({
+          next: (v) =>  { 
+            Swal.fire(
+              'Eliminado',
+              'El producto ha sido eliminado del registro',
+              'success'
+            ).then(() => {
+              location.reload();
+            });     
+          },
+          error: (e) => {},
+          complete: () => console.info('complete')
+        })
+        
+      }
+    }) 
+  }
   sendproducts(event: Event) {
     event.preventDefault();
     const value = this.form.value;
