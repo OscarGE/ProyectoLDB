@@ -12,8 +12,14 @@ export class SalesService {
   getSales(id_user: string): Observable<Sale>{
     return this.http.get(`${this.API_URI}/sales/list/${id_user}`)
   }
+  getSalesToday(id_user: string): Observable<Sale>{
+    return this.http.get(`${this.API_URI}/sales/listToday/${id_user}`)
+  }
   getSale(id: string): Observable<Sale>{
     return this.http.get(`${this.API_URI}/sales/one/${id}`);
+  }
+  getcustomerList(id_user: string): Observable<Sale>{
+    return this.http.get(`${this.API_URI}/sales/customerList/${id_user}`);
   }
   deleteSale(id: string): Observable<Sale>{
     return this.http.delete(`${this.API_URI}/sales/${id}`);

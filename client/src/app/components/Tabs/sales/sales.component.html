@@ -17,7 +17,7 @@
             </tr>
           </thead>
            <tbody>
-             <tr *ngFor="let product of productsLits; let i=index;" [routerLink]="'../sales/sell/'+product.id" routerLinkActive="active">
+             <tr *ngFor="let product of productsList; let i=index;" [routerLink]="'../sales/sell/'+product.id" routerLinkActive="active">
                <th scope="row">{{product.name}}</th>
                <td>{{product.description}}</td>
                <td>{{product.nameProvider}}</td>
@@ -28,12 +28,41 @@
            </tbody>
         </table>
         <p class="separador text-center">Venta del día</p>
-
-         
-         
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let sell of saleList; let i=index;">
+            <div class="card text-left">
+              <div class="card-header">
+                <b><i>{{sell.customer}}</i></b>
+              </div>
+              <div class="card-body ventas">
+                <b>Producto: </b> {{sell.nameProduct}} <hr>
+                <table class="table text-left">
+                  <thead>
+                    <tr>
+                      <th scope="col">Precio</th>
+                      <th scope="col">Cantidad</th>
+                      <th scope="col">Monto</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>$ {{sell.price}}</td>
+                      <td>{{sell.quantity}}</td>
+                      <td>$ {{sell.amount}}</td>
+                    </tr>
+                  </tbody>
+                </table>     
+              </div>
+              <div class="card-footer text-muted">
+                {{sell.sale_date | date: 'M/d/yy, h:mm a'}}
+              </div>
+            </div>
+          </div>  
+        </div>   
       </div>
     </div>
   </div>
 </div>
+
 
 

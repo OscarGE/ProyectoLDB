@@ -10,7 +10,9 @@ class SalesRoutes {
     }
     config() {
         this.router.get('/list/:id_user', salesController_1.salesController.list); //listar todas las ventas
+        this.router.get('/listToday/:id_user', salesController_1.salesController.listToday); //listar todas las ventas de hoy
         this.router.get('/one/:id', salesController_1.salesController.getOne); //mostrar una venta por su id
+        this.router.get('/customerList/:id_user', salesController_1.salesController.customerList); //mostrar una la lista de clientes 
         this.router.post('/', salesController_1.salesController.register); //registrar una venta
         this.router.put('/:id', salesController_1.salesController.update); //actualizar una venta por su id
         this.router.delete('/:id', salesController_1.salesController.delete); //eliminar una venta por su id
