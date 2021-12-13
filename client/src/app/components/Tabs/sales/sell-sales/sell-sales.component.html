@@ -78,14 +78,9 @@
           </div><br>
           <p class="separador3">Para hacer el seguimiento de las compras de un cliente, ingrese su nombre aquí</p>
           <div class="mb-2 form-floating">
-            <input list="customer" name="myBrowser" class="form-control" placeholder="Nombre del cliente" name="customer" formControlName="customer">
+            <input list="customer" name="myBrowser" class="form-control" placeholder="Nombre del cliente" name="customer" formControlName="customer" autocomplete="off">
             <datalist id="customer">
-              <option value="Chrome">
-              <option value="Firefox">
-              <option value="Internet Explorer">
-              <option value="Opera">
-              <option value="Safari">
-              <option value="Microsoft Edge">
+              <option [value]="customer.customer" *ngFor="let customer of customerList; let i=index;">
             </datalist>
             <label style="color: #AEB6BF">Nombre del cliente</label>
           </div>

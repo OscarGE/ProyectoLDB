@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/Product';
 import { ProductService } from '../../../services/product_service/product.service';
+import { SalesService } from '../../../services/sales_service/sales.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-sales',
@@ -9,8 +11,9 @@ import { ProductService } from '../../../services/product_service/product.servic
 })
 export class SalesComponent implements OnInit {
   userId=""
-  productsLits: any=[];
-  constructor(private productService: ProductService) {
+  productsList: any=[];
+  saleList: any=[];
+  constructor(private productService: ProductService, private salesService: SalesService) {
   }
 
   ngOnInit(): void {
@@ -21,7 +24,15 @@ export class SalesComponent implements OnInit {
       this.productService.getProductsStock(this.userId)
       .subscribe({
         next: (v) =>  { 
-          this.productsLits=v
+          this.productsList=v
+        },
+        error: (e) => {console.log(e)},
+        complete: () => console.info('complete')
+      })
+      this.salesService.getSalesToday(this.userId)
+      .subscribe({
+        next: (v) =>  { 
+          this.saleList = v
         },
         error: (e) => {console.log(e)},
         complete: () => console.info('complete')

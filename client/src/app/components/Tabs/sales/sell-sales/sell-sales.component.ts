@@ -22,6 +22,7 @@ export class SellSalesComponent implements OnInit {
   categoriesList:any=[];
   providersIdList:any=[];
   categoriesIdList:any=[];
+  customerList:any=[];
   haveSuppliers=false
   editProduct!: Product;
   newSale!: Sale;
@@ -84,6 +85,15 @@ export class SellSalesComponent implements OnInit {
         error: (e) => {console.log(e)},
         complete: () => console.info('complete')
       })
+      this.salesService.getcustomerList(this.userId)
+      .subscribe({
+        next: (v) =>  { 
+          this.customerList=v
+          console.log(this.customerList)
+        },
+        error: (e) => {console.log(e)},
+        complete: () => console.info('complete')
+      })
 
     } else {
       location.replace('');
@@ -108,7 +118,7 @@ export class SellSalesComponent implements OnInit {
       debounceTime(50)
     )
     .subscribe(value => {
-      this.form.controls['amount'].setValue("$ "+(this.productGet.price*value.quantity))
+      this.form.controls['amount'].setValue("$ "+(this.productGet.price*value.quantity).toFixed(2))
       if(value.quantity>value.stock){
         this.iEexceed=true
       }else{
@@ -120,7 +130,7 @@ export class SellSalesComponent implements OnInit {
   sendSale(event: Event) {
     event.preventDefault();
     const value = this.form.value;
-    const theamount = this.productGet.price*value.quantity
+    const theamount = (this.productGet.price*value.quantity).toFixed(2)
     this.newSale = {
       id_user:parseInt(this.userId),
       id_product:parseInt(this.productGet.id),
