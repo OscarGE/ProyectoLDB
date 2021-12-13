@@ -1,1 +1,39 @@
-<p>sales works!</p>
+<br><br>
+<div class="col-md-10 offset-md-1">
+  <div class="card">
+    <div class="card-header tituloCard" id='formUsr'><i class="fas fa-cash-register"></i> Venta</div> 
+    <div class="cardd-body"> 
+      <div class="container">
+        <p class="separador text-center">Lista de productos a la venta</p>
+        <table class="table  table-success table-hover text-left">
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Proveedor</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Stock</th>
+              <th scope="col">Categoría</th>
+            </tr>
+          </thead>
+           <tbody>
+             <tr *ngFor="let product of productsLits; let i=index;" [routerLink]="'../sales/sell/'+product.id" routerLinkActive="active">
+               <th scope="row">{{product.name}}</th>
+               <td>{{product.description}}</td>
+               <td>{{product.nameProvider}}</td>
+               <td>$ {{product.price}}</td>
+               <td>{{product.stock}}</td>
+               <td>{{product.category}}</td>
+             </tr>
+           </tbody>
+        </table>
+        <p class="separador text-center">Venta del día</p>
+
+         
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+

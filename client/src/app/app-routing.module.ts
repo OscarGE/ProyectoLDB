@@ -12,6 +12,7 @@ import { UpdataSuppliersComponent } from './components/Tabs/suppliers/updata-sup
 import { SeeSuppliersComponent } from './components/Tabs/suppliers/see-suppliers/see-suppliers.component';
 import { UpdataProductComponent } from './components/Tabs/products/updata-product/updata-product.component';
 import { SeeProductComponent } from './components/Tabs/products/see-product/see-product.component';
+import { SellSalesComponent } from './components/Tabs/sales/sell-sales/sell-sales.component';
 
 const routes: Routes = [
   
@@ -24,6 +25,7 @@ const routes: Routes = [
         {path: 'products/see/:id', component: SeeProductComponent},
         {path: 'products/update/:id', component: UpdataProductComponent},
         {path: 'sales', component: SalesComponent},
+        {path: 'sales/sell/:id', component: SellSalesComponent},
         {path: 'summary', component: SummaryComponent},
       ]
     },

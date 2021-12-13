@@ -25,9 +25,11 @@ class UserController {
   //Se ejecuta la query para registrar un usuario
   public async register(req: Request, res: Response): Promise<void> {
     req.body.password	= await bcryptjs.hash(req.body.password	, 8); //Encriptando la contraseña
-    await pool.query('INSERT INTO users set ?', [req.body], function(err, result, fields) {
+    await pool.query('INSERT INTO users set ?', [req.body],async function(err, result, fields) {
       if (err) throw err;
-      res.json({ message: 'Usario registrado', id: result.insertId });
+      await pool.query('SELECT * FROM users WHERE email = ? ', [req.body.email],async function (err, result, fields) {
+        return res.json(result[0]);
+      });
     });
     
   }

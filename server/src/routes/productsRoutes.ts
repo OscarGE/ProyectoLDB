@@ -10,6 +10,7 @@ class ProductsRoutes{
   }
   config(): void{//Se definen las peticiones
     this.router.get('/list/:id_user', productsController.list); //listar todos los productos
+    this.router.get('/listStock/:id_user', productsController.listStock); //listar todos los productos en stock
     this.router.get('/one/:id', productsController.getOne); //mostrar un producto por su id
     this.router.post('/',productsController.register); //registrar un producto
     this.router.put('/:id', productsController.update); //actualizar un producto por su id

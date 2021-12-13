@@ -18,12 +18,15 @@ import { UpdataSuppliersComponent } from './components/Tabs/suppliers/updata-sup
 import { SeeSuppliersComponent } from './components/Tabs/suppliers/see-suppliers/see-suppliers.component';
 import { UpdataProductComponent } from './components/Tabs/products/updata-product/updata-product.component';
 import { SeeProductComponent } from './components/Tabs/products/see-product/see-product.component';
-
+import { SellSalesComponent } from './components/Tabs/sales/sell-sales/sell-sales.component';
 
 //Servicios
 import { UserService } from './services/user_service/user.service';
 import { ProviderService } from './services/provider_service/provider.service';
 import { ProductService } from './services/product_service/product.service';
+import { SalesService } from './services/sales_service/sales.service';
+
+
 
 
 @NgModule({
@@ -40,7 +43,8 @@ import { ProductService } from './services/product_service/product.service';
     SeeProductComponent,
     UpdataProductComponent,
     SeeSuppliersComponent,
-    UpdataSuppliersComponent
+    UpdataSuppliersComponent,
+    SellSalesComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,8 @@ import { ProductService } from './services/product_service/product.service';
   providers: [
     UserService,
     ProviderService,
-    ProductService
+    ProductService,
+    SalesService
   ],
   bootstrap: [AppComponent]
 })
