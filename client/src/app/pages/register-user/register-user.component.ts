@@ -83,7 +83,7 @@ export class RegisterUserComponent implements OnInit {
           ).then((result) => {
             this.newUser = v;
             localStorage.setItem('sesion', JSON.stringify(this.newUser));
-            location.replace('../HappyDeal/welcome');
+            location.replace('../HappyDeal');
           })
         },
         error: (e) => {console.error(e)},

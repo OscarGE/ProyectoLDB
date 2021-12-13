@@ -46,9 +46,15 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             req.body.password = yield bcryptjs_1.default.hash(req.body.password, 8); //Encriptando la contraseña
             yield database_1.default.query('INSERT INTO users set ?', [req.body], function (err, result, fields) {
-                if (err)
-                    throw err;
-                res.json({ message: 'Usario registrado', id: result.insertId });
+                return __awaiter(this, void 0, void 0, function* () {
+                    if (err)
+                        throw err;
+                    yield database_1.default.query('SELECT * FROM users WHERE email = ? ', [req.body.email], function (err, result, fields) {
+                        return __awaiter(this, void 0, void 0, function* () {
+                            return res.json(result[0]);
+                        });
+                    });
+                });
             });
         });
     }

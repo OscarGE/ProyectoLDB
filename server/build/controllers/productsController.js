@@ -30,6 +30,28 @@ class ProductsController {
             });
         });
     }
+    //Se ejecuta la query para listar todos los productos con stock menor a 0
+    listStock(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id_user } = req.params;
+            yield database_1.default.query(`
+                    SELECT p.id_user, p.id, p.name, p.description, p.registered_at, p.price, p.stock, v.name AS nameProvider, v.id AS idProvider, c.category, c.id AS idCategory
+                    FROM products p 
+                    INNER JOIN providers v 
+                    ON p.id_provider=v.id 
+                    INNER JOIN categories c 
+                    ON p.id_category=c.id
+                    WHERE p.id_user = ? AND p.stock > 0
+                    ORDER BY p.registered_at DESC`, [id_user], function (err, result, fields) {
+                if (err)
+                    throw err;
+                if (result.length > 0) {
+                    return res.json(result);
+                }
+                res.status(404).json({ message: 'Este usario no tiene productos' });
+            });
+        });
+    }
     //Se ejecuta la query para mostrar un producto por su id
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
