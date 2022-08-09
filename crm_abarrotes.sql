@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-12-2021 a las 23:04:33
--- Versión del servidor: 10.4.22-MariaDB
--- Versión de PHP: 7.4.26
+-- Tiempo de generación: 03-08-2022 a las 17:10:19
+-- Versión del servidor: 10.4.22-MariaDB-log
+-- Versión de PHP: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -85,7 +85,34 @@ INSERT INTO `contacts` (`id`, `id_provider`, `type`, `contact`) VALUES
 (24, 8, 'Instagram', 'www.instagram.com/sabritas'),
 (25, 9, 'Teléfono', '7890972334'),
 (26, 9, 'e-mail', 'www.purina-latam.com'),
-(27, 9, 'Teléfono', '7890970945');
+(27, 9, 'Teléfono', '7890970945'),
+(33, 14, 'Teléfono', '454545454343');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `contacts1`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `contacts1` (
+`id` int(10)
+,`id_provider` int(10)
+,`type` varchar(20)
+,`contact` varchar(40)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `contacts2`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `contacts2` (
+`id` int(10)
+,`id_provider` int(10)
+,`type` varchar(20)
+,`contact` varchar(40)
+);
 
 -- --------------------------------------------------------
 
@@ -120,7 +147,44 @@ INSERT INTO `info_sales` (`id_sales`, `id_user`, `id_product`, `id_provider`, `c
 (39, 7, 8, 7, 'Carlos', 36, 1, 36, '2021-12-06 07:50:16'),
 (42, 7, 10, 9, 'Marco', 648, 8, 81, '2021-12-13 18:17:30'),
 (42, 7, 10, 9, 'Marco', 324, 4, 81, '2021-12-13 18:17:53'),
-(42, 7, 10, 9, 'Marco', 243, 3, 81, '2021-12-13 18:19:06');
+(42, 7, 10, 9, 'Marco', 243, 3, 81, '2021-12-13 18:19:06'),
+(38, 7, 9, 8, 'Oscar', 60, 3, 20, '2022-06-17 16:43:00');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `info_sales1`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `info_sales1` (
+`id_sales` int(10)
+,`id_user` int(10)
+,`id_product` int(10)
+,`id_provider` int(10)
+,`customer` varchar(100)
+,`amount` int(10)
+,`quantity` int(10)
+,`price` float
+,`sale_date` timestamp
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `info_sales2`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `info_sales2` (
+`id_sales` int(10)
+,`id_user` int(10)
+,`id_product` int(10)
+,`id_provider` int(10)
+,`customer` varchar(100)
+,`amount` int(10)
+,`quantity` int(10)
+,`price` float
+,`sale_date` timestamp
+);
 
 -- --------------------------------------------------------
 
@@ -151,7 +215,8 @@ INSERT INTO `locations` (`id`, `id_provider`, `country`, `state`, `city`, `posta
 (7, 6, 'México', 'Sonora', 'Nogales', '84094', 'Calzada Industrial de la Manufactura No.35, Nueva Nogales.'),
 (8, 7, 'Madagascar', 'Veracruz', 'Veracruz', '91700', 'C. Aquiles Serdán 732, Centro'),
 (9, 8, 'México', 'Aguascalientes', 'Aguascalientes', '20290', 'Julio Díaz Torre 203, Cd Industrial'),
-(10, 9, 'México', 'Jalisco', 'Guadalajara', '44940', 'Sombrerete 4425, El Manantial');
+(10, 9, 'México', 'Jalisco', 'Guadalajara', '44940', 'Sombrerete 4425, El Manantial'),
+(14, 14, 'Alemania', 'Aguascalientes', 'Aguascalientes', '20126', 'Calle de los Gallos 129, Villas de Ntra. Sra.\nVivienda particular');
 
 -- --------------------------------------------------------
 
@@ -183,11 +248,48 @@ INSERT INTO `products` (`id`, `id_user`, `name`, `description`, `price`, `stock`
 (5, 7, 'Coca-Cola Sin Azúcar 3 L', 'Botella de refresco coca-cola sin azúcar ', 27, 16, 4, 1, '2021-12-12 01:39:05'),
 (7, 7, 'Vasos de prolipropileno', 'deal para todo tipo de reuniones gracias a su capacidad y resistencia. Con su variedad de tamaños, se adaptan a tus necesidades.', 20, 0, 6, 8, '2021-12-12 01:43:44'),
 (8, 7, 'Ariel Doble Poder Polvo 500 kg', 'Ariel Doble Poder es un detergente en polvo para lavar ropa blanca y de color.', 36, 17, 7, 4, '2021-12-12 01:45:37'),
-(9, 7, 'Ruffles', 'Bolsa de papas sabor queso ', 20, 32, 8, 1, '2021-12-12 01:48:09'),
+(9, 7, 'Ruffles', 'Bolsa de papas sabor queso ', 20, 5, 8, 1, '2021-12-12 01:48:09'),
 (10, 7, 'Dog Chow EXTRA Life', 'Alimento Para Perro Adulto Nutriplus 18 kg', 81, 33, 9, 5, '2021-12-12 01:51:34'),
 (11, 7, 'Crest complete menta suave 50 ml', 'Pasta dental Crest. Ayuda a detener las caries con la pasta dental Crest complete, que además de darte una higiene bucal completa, te ayuda a eliminar bacterias en cada cepillado de dientes , gracias a su sistema activprotec.', 17, 0, 7, 6, '2021-12-12 16:04:13'),
 (12, 7, 'Head & Houlders protección caída con caída 600ml', 'Protección Caída con Cafeína refuerza el cabello desde la raíz para evitar el quiebre.', 70.4, 23, 7, 6, '2021-12-13 03:02:59'),
-(13, 7, 'Bran Frut fresa', 'Barra', 15, 0, 5, 1, '2021-12-13 18:14:27');
+(13, 7, 'Bran Frut fresa', 'Barra', 15, 0, 5, 1, '2021-12-13 18:14:27'),
+(14, 7, 'Vasos de prolipropileno', 'dffdfd', 400, 5, 4, 2, '2022-06-17 16:52:23');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `products1`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `products1` (
+`id` int(10)
+,`id_user` int(10)
+,`name` varchar(60)
+,`description` text
+,`price` float
+,`stock` int(10)
+,`id_provider` int(10)
+,`id_category` int(10)
+,`registered_at` timestamp
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `products2`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `products2` (
+`id` int(10)
+,`id_user` int(10)
+,`name` varchar(60)
+,`description` text
+,`price` float
+,`stock` int(10)
+,`id_provider` int(10)
+,`id_category` int(10)
+,`registered_at` timestamp
+);
 
 -- --------------------------------------------------------
 
@@ -216,7 +318,36 @@ INSERT INTO `providers` (`id`, `id_user`, `name`, `description`, `registered_at`
 (6, 7, 'REYMA', 'Desarrollamos tecnología que nos permita elaborar productos desechables amigables con el medio ambiente y con la capacidad de ser recuperados energéticamente. ', '2021-12-12 01:26:33'),
 (7, 7, 'Procter & Gamble', 'Procter & Gamble también conocida como P&G es una empresa estadounidense multinacional de bienes de consumo con sede en Cincinnati, Estados Unidos.', '2021-12-12 01:28:20'),
 (8, 7, 'Sabritas', 'Sabritas es una empresa subsidiaria de PepsiCo. Sabritas es la versión mexicana de Frito-Lay, por lo que son similares en imagen y en los productos que distribuyen.', '2021-12-12 01:30:13'),
-(9, 7, 'Purina', 'Purina Petcare Company es la división de alimentos para mascotas de Nestlé, con sede en Suiza, tras la fusión el 12 de diciembre de 2001, entre el Friskies Nestlé Petcare Company y la estadounidense Ralston Purina Company.', '2021-12-12 01:36:46');
+(9, 7, 'Purina', 'Purina Petcare Company es la división de alimentos para mascotas de Nestlé, con sede en Suiza, tras la fusión el 12 de diciembre de 2001, entre el Friskies Nestlé Petcare Company y la estadounidense Ralston Purina Company.', '2021-12-12 01:36:46'),
+(14, 7, 'Oscar González Esparza', 'cgcfgfgf', '2022-06-17 16:51:13');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `providers1`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `providers1` (
+`id` int(10)
+,`id_user` int(10)
+,`name` varchar(60)
+,`description` text
+,`registered_at` timestamp
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `providers2`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `providers2` (
+`id` int(10)
+,`id_user` int(10)
+,`name` varchar(60)
+,`description` text
+,`registered_at` timestamp
+);
 
 -- --------------------------------------------------------
 
@@ -265,6 +396,122 @@ INSERT INTO `users` (`id`, `email`, `password`, `registered_at`) VALUES
 (9, 'sort@gmail.com', '$2a$08$wcR5GhrydA7hKwhohDUyJuGJaqdvJboJ2q5gZYfdk5txf8EeD9SWK', '2021-12-13 02:51:43'),
 (10, 'pedro@gmial.com', '$2a$08$WBB8Zur1bn4sK0yKRlLncu5XLHXcAXTM0cNik48Oie.anAurXX0fO', '2021-12-13 13:50:50'),
 (11, 'carlos@gmail.com', '$2a$08$/KumCyx3crgFRNfhxOyHou6eCDV4JQx7ImdDgMd2brx15F/4Qs6Z2', '2021-12-13 18:07:40');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `users1`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `users1` (
+`id` int(10)
+,`email` varchar(60)
+,`password` varchar(60)
+,`registered_at` timestamp
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `users2`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `users2` (
+`id` int(10)
+,`email` varchar(60)
+,`password` varchar(60)
+,`registered_at` timestamp
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `contacts1`
+--
+DROP TABLE IF EXISTS `contacts1`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `contacts1`  AS SELECT `contacts`.`id` AS `id`, `contacts`.`id_provider` AS `id_provider`, `contacts`.`type` AS `type`, `contacts`.`contact` AS `contact` FROM `contacts` WHERE `contacts`.`type` in ('Teléfono','e-mail','Website') ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `contacts2`
+--
+DROP TABLE IF EXISTS `contacts2`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `contacts2`  AS SELECT `contacts`.`id` AS `id`, `contacts`.`id_provider` AS `id_provider`, `contacts`.`type` AS `type`, `contacts`.`contact` AS `contact` FROM `contacts` WHERE `contacts`.`type` in ('Facebook','Instagram','Twitter') ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `info_sales1`
+--
+DROP TABLE IF EXISTS `info_sales1`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `info_sales1`  AS SELECT `info_sales`.`id_sales` AS `id_sales`, `info_sales`.`id_user` AS `id_user`, `info_sales`.`id_product` AS `id_product`, `info_sales`.`id_provider` AS `id_provider`, `info_sales`.`customer` AS `customer`, `info_sales`.`amount` AS `amount`, `info_sales`.`quantity` AS `quantity`, `info_sales`.`price` AS `price`, `info_sales`.`sale_date` AS `sale_date` FROM `info_sales` WHERE `info_sales`.`amount` < 200 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `info_sales2`
+--
+DROP TABLE IF EXISTS `info_sales2`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `info_sales2`  AS SELECT `info_sales`.`id_sales` AS `id_sales`, `info_sales`.`id_user` AS `id_user`, `info_sales`.`id_product` AS `id_product`, `info_sales`.`id_provider` AS `id_provider`, `info_sales`.`customer` AS `customer`, `info_sales`.`amount` AS `amount`, `info_sales`.`quantity` AS `quantity`, `info_sales`.`price` AS `price`, `info_sales`.`sale_date` AS `sale_date` FROM `info_sales` WHERE `info_sales`.`amount` >= 200 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `products1`
+--
+DROP TABLE IF EXISTS `products1`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `products1`  AS SELECT `products`.`id` AS `id`, `products`.`id_user` AS `id_user`, `products`.`name` AS `name`, `products`.`description` AS `description`, `products`.`price` AS `price`, `products`.`stock` AS `stock`, `products`.`id_provider` AS `id_provider`, `products`.`id_category` AS `id_category`, `products`.`registered_at` AS `registered_at` FROM `products` WHERE `products`.`price` < 50 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `products2`
+--
+DROP TABLE IF EXISTS `products2`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `products2`  AS SELECT `products`.`id` AS `id`, `products`.`id_user` AS `id_user`, `products`.`name` AS `name`, `products`.`description` AS `description`, `products`.`price` AS `price`, `products`.`stock` AS `stock`, `products`.`id_provider` AS `id_provider`, `products`.`id_category` AS `id_category`, `products`.`registered_at` AS `registered_at` FROM `products` WHERE `products`.`price` >= 50 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `providers1`
+--
+DROP TABLE IF EXISTS `providers1`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `providers1`  AS SELECT `providers`.`id` AS `id`, `providers`.`id_user` AS `id_user`, `providers`.`name` AS `name`, `providers`.`description` AS `description`, `providers`.`registered_at` AS `registered_at` FROM `providers` WHERE `providers`.`id` < 10 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `providers2`
+--
+DROP TABLE IF EXISTS `providers2`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `providers2`  AS SELECT `providers`.`id` AS `id`, `providers`.`id_user` AS `id_user`, `providers`.`name` AS `name`, `providers`.`description` AS `description`, `providers`.`registered_at` AS `registered_at` FROM `providers` WHERE `providers`.`id` >= 10 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `users1`
+--
+DROP TABLE IF EXISTS `users1`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `users1`  AS SELECT `users`.`id` AS `id`, `users`.`email` AS `email`, `users`.`password` AS `password`, `users`.`registered_at` AS `registered_at` FROM `users` WHERE `users`.`id` < 10 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `users2`
+--
+DROP TABLE IF EXISTS `users2`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `users2`  AS SELECT `users`.`id` AS `id`, `users`.`email` AS `email`, `users`.`password` AS `password`, `users`.`registered_at` AS `registered_at` FROM `users` WHERE `users`.`id` >= 10 ;
 
 --
 -- Índices para tablas volcadas
@@ -342,25 +589,25 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT de la tabla `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `providers`
 --
 ALTER TABLE `providers`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `sales`
